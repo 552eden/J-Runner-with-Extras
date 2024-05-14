@@ -3833,6 +3833,38 @@ namespace JRunner
             new Thread(updatecptextbox).Start();
         }
 
+        private void sendNandToXboxStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (this.myIP.socket_on == 1)
+            {
+                Console.WriteLine("Server already active!");
+            }
+            else
+            {
+                ThreadStart starter = delegate { myIP.nandOverIP(); };
+                new Thread(starter).Start();
+                if (variables.debugMode) Console.WriteLine("-----{0}--------", variables.cpukey);
+                new Thread(updatecptextbox).Start();
+            }
+            
+        }
+        private void receiveFileFromXbxoStripMenuItemP_Click(object sender, EventArgs e)
+        {
+            if (this.myIP.socket_on == 0)
+            {
+                Console.WriteLine("Server already closed!");
+            }
+            else
+            {
+                ThreadStart starter = delegate { myIP.closeSocket(); };
+                new Thread(starter).Start();
+                if (variables.debugMode) Console.WriteLine("-----{0}--------", variables.cpukey);
+                new Thread(updatecptextbox).Start();
+            }
+        }
+
+
+
         private void btnScanner_Click(object sender, EventArgs e)
         {
             if (variables.isscanningip)
@@ -5031,5 +5063,20 @@ namespace JRunner
         }
 
         #endregion
+
+        private void pnlExtra_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void pnlTools_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void groupBox8_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }

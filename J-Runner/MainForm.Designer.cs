@@ -51,6 +51,8 @@ namespace JRunner
             this.getCpuKeyMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.getAndSaveToWorkingFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToDesktopToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.startNandServerStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.stopNandServerStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.labelIP = new System.Windows.Forms.Label();
             this.txtIP = new System.Windows.Forms.TextBox();
             this.btnScanner = new System.Windows.Forms.Button();
@@ -318,6 +320,7 @@ namespace JRunner
             this.toolTip1.SetToolTip(this.groupBox8, "If you connect your Xbox 360 to your PC using a network cable, \r\nOnce booted with" +
         " Xellous or Xell-Reloaded place the displayed IP address in\r\nthe box and retriev" +
         "e your CPU Key by pressing the button.");
+            this.groupBox8.Enter += new System.EventHandler(this.groupBox8_Enter);
             // 
             // btnIPGetCPU
             // 
@@ -343,7 +346,9 @@ namespace JRunner
             this.getCpuKeyMenu.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.getCpuKeyMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.getAndSaveToWorkingFolderToolStripMenuItem,
-            this.saveToDesktopToolStripMenuItem});
+            this.saveToDesktopToolStripMenuItem,
+            this.startNandServerStripMenuItem,
+            this.stopNandServerStripMenuItem});
             this.getCpuKeyMenu.Name = "contextMenuStrip1";
             this.getCpuKeyMenu.Size = new System.Drawing.Size(198, 48);
             // 
@@ -360,6 +365,20 @@ namespace JRunner
             this.saveToDesktopToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
             this.saveToDesktopToolStripMenuItem.Text = "Save To Desktop";
             this.saveToDesktopToolStripMenuItem.Click += new System.EventHandler(this.saveToDesktopToolStripMenuItem_Click);
+            // 
+            // sendNandToXboxStripMenuItem
+            // 
+            this.startNandServerStripMenuItem.Name = "startNandServerStripMenuItem";
+            this.startNandServerStripMenuItem.Size = new System.Drawing.Size(197, 22);
+            this.startNandServerStripMenuItem.Text = "Start Nand Server";
+            this.startNandServerStripMenuItem.Click += new System.EventHandler(this.sendNandToXboxStripMenuItem_Click);
+            // 
+            // receiveFileFromXbxoStripMenuItem
+            // 
+            this.stopNandServerStripMenuItem.Name = "stopNandServerStripMenuItem";
+            this.stopNandServerStripMenuItem.Size = new System.Drawing.Size(197, 22);
+            this.stopNandServerStripMenuItem.Text = "Stop Nand Server";
+            this.stopNandServerStripMenuItem.Click += new System.EventHandler(this.receiveFileFromXbxoStripMenuItemP_Click);
             // 
             // labelIP
             // 
@@ -729,6 +748,7 @@ namespace JRunner
             this.pnlTools.Name = "pnlTools";
             this.pnlTools.Size = new System.Drawing.Size(465, 173);
             this.pnlTools.TabIndex = 20;
+            this.pnlTools.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlTools_Paint);
             // 
             // pnlExtra
             // 
@@ -736,6 +756,7 @@ namespace JRunner
             this.pnlExtra.Name = "pnlExtra";
             this.pnlExtra.Size = new System.Drawing.Size(342, 156);
             this.pnlExtra.TabIndex = 22;
+            this.pnlExtra.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlExtra_Paint);
             // 
             // toolsToolStripMenuItem
             // 
@@ -1491,6 +1512,8 @@ namespace JRunner
         private ContextMenuStrip getCpuKeyMenu;
         private ToolStripMenuItem getAndSaveToWorkingFolderToolStripMenuItem;
         private ToolStripMenuItem saveToDesktopToolStripMenuItem;
+        private ToolStripMenuItem startNandServerStripMenuItem;
+        private ToolStripMenuItem stopNandServerStripMenuItem;
         private ContextMenuStrip showWorkingFolderMenu;
         private ToolStripMenuItem showRootFolderToolStripMenuItem;
         private ToolStripMenuItem showOutputFolderToolStripMenuItem;
